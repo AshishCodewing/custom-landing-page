@@ -2083,6 +2083,17 @@
       white-space: nowrap
     }
 
+    .custom-landing-page .departures__widget {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem
+    }
+
+    .custom-landing-page .departures__widget-inner {
+      width: 100%;
+      max-width: 590px
+    }
+
     .custom-landing-page .departures__info-box {
       margin-top: 2.5rem;
       padding: 1.5rem;
@@ -3533,4 +3544,9 @@
 
     .custom-landing-page .min-w-\[800px\] {
       min-width: 800px
+    }
+    .customer-review-wrapper {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 1rem;
     }
