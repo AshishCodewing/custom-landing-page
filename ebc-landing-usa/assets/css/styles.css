@@ -488,7 +488,18 @@
     }
 
     .custom-landing-page .section {
-      padding-block: 3rem
+      --padding-top: var(--_padding-top, 3rem);
+      --padding-bottom: var(--_padding-bottom, 3rem);
+      padding-top: var(--padding-top);
+      padding-bottom: var(--padding-bottom)
+    }
+
+    .custom-landing-page .section--flush-top {
+      --_padding-top: 0
+    }
+
+    .custom-landing-page .section--flush-bottom {
+      --_padding-bottom: 0
     }
 
     .custom-landing-page .section__label {
@@ -549,7 +560,8 @@
 
     @media(min-width:48rem) {
       .custom-landing-page .section {
-        padding-block: 5rem
+        --padding-top: var(--_padding-top, 5rem);
+        --padding-bottom: var(--_padding-bottom, 5rem)
       }
 
       .custom-landing-page .section__title {
