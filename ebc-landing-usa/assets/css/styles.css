@@ -1264,73 +1264,6 @@
       margin-top: 0.75rem
     }
 
-    .custom-landing-page .trust-card {
-      background-color: var(--color-white);
-      border-radius: var(--radius-xl);
-      padding: 1.5rem
-    }
-
-    @media(min-width:48rem) {
-      .custom-landing-page .trust-card {
-        padding: 2rem
-      }
-    }
-
-    .custom-landing-page .trust-card__header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem
-    }
-
-    .custom-landing-page .trust-card__icon {
-      font-size: 1.5rem
-    }
-
-    .custom-landing-page .trust-card__title {
-      font-weight: 700;
-      font-size: 1.125rem;
-      color: var(--color-charcoal)
-    }
-
-    .custom-landing-page .trust-card__sub {
-      color: var(--color-success);
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem
-    }
-
-    .custom-landing-page .trust-card__stars {
-      color: var(--color-accent);
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem
-    }
-
-    .custom-landing-page .trust-card__rating {
-      color: var(--color-charcoal);
-      font-weight: 700;
-      font-size: 1.875rem;
-      margin-bottom: 0.25rem
-    }
-
-    .custom-landing-page .trust-card__rating-sub {
-      color: var(--color-gray-400);
-      font-size: 1.125rem
-    }
-
-    .custom-landing-page .trust-card__count {
-      color: var(--color-gray-500);
-      font-size: 0.875rem;
-      margin-bottom: 1rem
-    }
-
-    .custom-landing-page .trust-card__quote {
-      color: var(--color-gray-600);
-      font-size: 0.75rem;
-      font-style: italic;
-      margin-bottom: 1rem
-    }
-
     .custom-landing-page .trust-card__link {
       color: var(--color-brand);
       font-size: 0.875rem;
@@ -1339,24 +1272,6 @@
 
     .custom-landing-page .trust-card__link:hover {
       text-decoration: underline
-    }
-
-    .custom-landing-page .trust-card__review {
-      padding-bottom: 0.75rem;
-      margin-bottom: 0.75rem;
-      border-bottom: 1px solid var(--color-gray-100)
-    }
-
-    .custom-landing-page .trust-card__review-name {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--color-charcoal)
-    }
-
-    .custom-landing-page .trust-card__review-text {
-      font-size: 0.75rem;
-      color: var(--color-gray-600);
-      margin-top: 0.25rem
     }
 
     /* ── Official Certifications & Memberships ───────────────────── */
