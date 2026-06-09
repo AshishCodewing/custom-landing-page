@@ -920,7 +920,7 @@
       background-color: rgb(var(--primary-color-100));
       color: var(--color-white);
       font-weight: 700;
-      font-size: 1.125rem;
+      font-size: 1rem;
       padding: 1rem 2rem;
       border: 2px solid rgb(var(--primary-color-100));
       border-radius: var(--radius-lg);
@@ -932,7 +932,7 @@
       border: 2px solid var(--color-white);
       color: var(--color-white);
       font-weight: 700;
-      font-size: 1.125rem;
+      font-size: 1rem;
       padding: 1rem 2rem;
       border-radius: var(--radius-lg);
       width: 100%;
@@ -1120,7 +1120,7 @@
     }
 
     .custom-landing-page .usp-card__badge {
-      font-size: 1rem;
+      font-size: 0.75rem;
       font-weight: 700;
       padding: 0.25rem 0.75rem;
       border-radius: 9999px
@@ -3741,7 +3741,7 @@
 
     .custom-landing-page .guide-card__details--solo {
       text-align: left;
-      max-width: 600px;
+      max-width: 620px;
       margin-inline: auto
     }
 
