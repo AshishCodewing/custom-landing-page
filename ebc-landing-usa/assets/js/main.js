@@ -127,3 +127,242 @@
         init();
       }
     })();
+
+    // Departure dates: data-driven tabbed cards rendered into #departures-app.
+    // Only `dates` changes per card; every other field is shared across the
+    // whole season. To add a departure, add a date string. To add a season,
+    // append an object. `variant` is either "available" (green, "Inquire") or
+    // "earlybird" (indigo, "Register Interest").
+    (function () {
+      var DEPARTURES = [
+        {
+          id: "autumn-2026",
+          tab: "Autumn 2026",
+          title: "Autumn 2026 Departures",
+          desc: "August through December — clear skies, crisp mountain air, exceptional visibility to the summits",
+          variant: "available",
+          status: "AVAILABLE — AUTUMN 2026",
+          price: "USD $1,430 per person — all inclusive",
+          spots: "Guaranteed Departure",
+          confirmed: "Guide Assigned · Route Confirmed · Teahouses Reserved",
+          btnText: "Inquire About This Date",
+          btnHref: "#inquiry",
+          ctaSub: "Responds within 2 hours · $200 deposit to confirm",
+          dates: [
+            "01 Aug – 15 Aug 2026", "03 Aug – 17 Aug 2026", "05 Aug – 19 Aug 2026", "08 Aug – 22 Aug 2026",
+            "10 Aug – 24 Aug 2026", "12 Aug – 26 Aug 2026", "15 Aug – 29 Aug 2026", "17 Aug – 31 Aug 2026",
+            "19 Aug – 02 Sep 2026", "22 Aug – 05 Sep 2026", "24 Aug – 07 Sep 2026", "26 Aug – 09 Sep 2026",
+            "29 Aug – 12 Sep 2026", "31 Aug – 14 Sep 2026", "02 Sep – 16 Sep 2026", "05 Sep – 19 Sep 2026",
+            "07 Sep – 21 Sep 2026", "09 Sep – 23 Sep 2026", "12 Sep – 26 Sep 2026", "14 Sep – 28 Sep 2026",
+            "16 Sep – 30 Sep 2026", "19 Sep – 03 Oct 2026", "21 Sep – 05 Oct 2026", "23 Sep – 07 Oct 2026",
+            "26 Sep – 10 Oct 2026", "28 Sep – 12 Oct 2026", "30 Sep – 14 Oct 2026", "03 Oct – 17 Oct 2026",
+            "05 Oct – 19 Oct 2026", "07 Oct – 21 Oct 2026", "10 Oct – 24 Oct 2026", "12 Oct – 26 Oct 2026",
+            "14 Oct – 28 Oct 2026", "17 Oct – 31 Oct 2026", "19 Oct – 02 Nov 2026", "21 Oct – 04 Nov 2026",
+            "24 Oct – 07 Nov 2026", "26 Oct – 09 Nov 2026", "28 Oct – 11 Nov 2026", "31 Oct – 14 Nov 2026",
+            "02 Nov – 16 Nov 2026", "04 Nov – 18 Nov 2026", "07 Nov – 21 Nov 2026", "09 Nov – 23 Nov 2026",
+            "11 Nov – 25 Nov 2026", "14 Nov – 28 Nov 2026", "16 Nov – 30 Nov 2026", "18 Nov – 02 Dec 2026",
+            "21 Nov – 05 Dec 2026", "23 Nov – 07 Dec 2026", "25 Nov – 09 Dec 2026", "28 Nov – 12 Dec 2026",
+            "30 Nov – 14 Dec 2026", "02 Dec – 16 Dec 2026", "05 Dec – 19 Dec 2026", "07 Dec – 21 Dec 2026",
+            "09 Dec – 23 Dec 2026", "12 Dec – 26 Dec 2026", "14 Dec – 28 Dec 2026", "16 Dec – 30 Dec 2026",
+            "19 Dec – 02 Jan 2027", "21 Dec – 04 Jan 2027", "23 Dec – 06 Jan 2027", "26 Dec – 09 Jan 2027",
+            "28 Dec – 11 Jan 2027", "30 Dec – 13 Jan 2027"
+          ]
+        },
+        {
+          id: "winter-2027",
+          tab: "Winter 2027",
+          title: "Winter 2027 Departures",
+          desc: "January through February — quiet trails, fewer crowds, stunning crisp visibility",
+          variant: "available",
+          status: "AVAILABLE — WINTER 2027",
+          price: "USD $1,430 per person — all inclusive",
+          spots: "Guaranteed Departure",
+          confirmed: "Guide Assigned · Route Confirmed · Teahouses Reserved",
+          btnText: "Inquire About This Date",
+          btnHref: "#inquiry",
+          ctaSub: "Responds within 2 hours · $200 deposit to confirm",
+          dates: [
+            "01 Jan – 15 Jan 2027", "05 Jan – 19 Jan 2027", "08 Jan – 22 Jan 2027", "12 Jan – 26 Jan 2027",
+            "15 Jan – 29 Jan 2027", "19 Jan – 02 Feb 2027", "22 Jan – 05 Feb 2027", "26 Jan – 09 Feb 2027",
+            "29 Jan – 12 Feb 2027", "02 Feb – 16 Feb 2027", "05 Feb – 19 Feb 2027", "09 Feb – 23 Feb 2027",
+            "12 Feb – 26 Feb 2027", "16 Feb – 02 Mar 2027", "19 Feb – 05 Mar 2027", "23 Feb – 09 Mar 2027",
+            "26 Feb – 12 Mar 2027"
+          ]
+        },
+        {
+          id: "spring-2027",
+          tab: "Spring 2027",
+          title: "Spring 2027 Departures",
+          desc: "March through May — clear skies, moderate temperatures, blooming rhododendron forests",
+          variant: "available",
+          status: "AVAILABLE — SPRING 2027",
+          price: "USD $1,430 per person — all inclusive",
+          spots: "Guaranteed Departure",
+          confirmed: "Guide Assigned · Route Confirmed · Teahouses Reserved",
+          btnText: "Inquire About This Date",
+          btnHref: "#inquiry",
+          ctaSub: "Responds within 2 hours · $200 deposit to confirm",
+          dates: [
+            "01 Mar – 15 Mar 2027", "03 Mar – 17 Mar 2027", "06 Mar – 20 Mar 2027", "08 Mar – 22 Mar 2027",
+            "10 Mar – 24 Mar 2027", "13 Mar – 27 Mar 2027", "15 Mar – 29 Mar 2027", "17 Mar – 31 Mar 2027",
+            "20 Mar – 03 Apr 2027", "22 Mar – 05 Apr 2027", "24 Mar – 07 Apr 2027", "27 Mar – 10 Apr 2027",
+            "29 Mar – 12 Apr 2027", "31 Mar – 14 Apr 2027", "03 Apr – 17 Apr 2027", "05 Apr – 19 Apr 2027",
+            "07 Apr – 21 Apr 2027", "10 Apr – 24 Apr 2027", "12 Apr – 26 Apr 2027", "14 Apr – 28 Apr 2027",
+            "17 Apr – 01 May 2027", "19 Apr – 03 May 2027", "21 Apr – 05 May 2027", "24 Apr – 08 May 2027",
+            "26 Apr – 10 May 2027", "28 Apr – 12 May 2027", "01 May – 15 May 2027", "03 May – 17 May 2027",
+            "05 May – 19 May 2027", "08 May – 22 May 2027", "10 May – 24 May 2027", "12 May – 26 May 2027",
+            "15 May – 29 May 2027", "17 May – 31 May 2027", "19 May – 02 Jun 2027", "22 May – 05 Jun 2027",
+            "24 May – 07 Jun 2027", "26 May – 09 Jun 2027", "29 May – 12 Jun 2027", "31 May – 14 Jun 2027"
+          ]
+        },
+        {
+          id: "autumn-2027-aug",
+          tab: "Autumn 2027",
+          title: "Autumn 2027 Departures — Early Bird Registration",
+          desc: "August through December 2027 — register your interest now for priority access and Early Bird pricing",
+          variant: "earlybird",
+          status: "EARLY BIRD — AUTUMN 2027",
+          price: "USD $1,430 per person — all inclusive",
+          spots: "Priority access for early registrations",
+          confirmed: "No commitment required · Just your preferred date",
+          btnText: "Register Interest",
+          btnHref: "#inquiry",
+          ctaSub: "Early birds get first pick · No commitment required",
+          dates: [
+            "02 Aug – 16 Aug 2027", "04 Aug – 18 Aug 2027", "07 Aug – 21 Aug 2027", "09 Aug – 23 Aug 2027",
+            "11 Aug – 25 Aug 2027", "14 Aug – 28 Aug 2027", "16 Aug – 30 Aug 2027", "18 Aug – 01 Sep 2027",
+            "21 Aug – 04 Sep 2027", "23 Aug – 06 Sep 2027", "25 Aug – 08 Sep 2027", "28 Aug – 11 Sep 2027",
+            "30 Aug – 13 Sep 2027", "01 Sep – 15 Sep 2027", "04 Sep – 18 Sep 2027", "06 Sep – 20 Sep 2027",
+            "08 Sep – 22 Sep 2027", "11 Sep – 25 Sep 2027", "13 Sep – 27 Sep 2027", "15 Sep – 29 Sep 2027",
+            "18 Sep – 02 Oct 2027", "20 Sep – 04 Oct 2027", "22 Sep – 06 Oct 2027", "25 Sep – 09 Oct 2027",
+            "27 Sep – 11 Oct 2027", "29 Sep – 13 Oct 2027"
+          ]
+        },
+        {
+          id: "october-2027",
+          tab: "October 2027",
+          title: "October 2027 — Early Bird Registration",
+          desc: "Peak autumn season — register your interest now for priority access",
+          variant: "earlybird",
+          status: "EARLY BIRD — AUTUMN 2027",
+          price: "USD $1,430 per person — all inclusive",
+          spots: "Priority access for early registrations",
+          confirmed: "No commitment required · Just your preferred date",
+          btnText: "Register Interest",
+          btnHref: "#inquiry",
+          ctaSub: "Early birds get first pick · No commitment required",
+          dates: [
+            "02 Oct – 16 Oct 2027", "04 Oct – 18 Oct 2027", "06 Oct – 20 Oct 2027", "09 Oct – 23 Oct 2027",
+            "11 Oct – 25 Oct 2027", "13 Oct – 27 Oct 2027", "16 Oct – 30 Oct 2027", "18 Oct – 01 Nov 2027",
+            "20 Oct – 03 Nov 2027", "23 Oct – 06 Nov 2027", "25 Oct – 08 Nov 2027", "27 Oct – 10 Nov 2027",
+            "30 Oct – 13 Nov 2027"
+          ]
+        },
+        {
+          id: "november-2027",
+          tab: "November 2027",
+          title: "November 2027 — Early Bird Registration",
+          desc: "Late autumn season — register your interest now for priority access",
+          variant: "earlybird",
+          status: "EARLY BIRD — AUTUMN 2027",
+          price: "USD $1,430 per person — all inclusive",
+          spots: "Priority access for early registrations",
+          confirmed: "No commitment required · Just your preferred date",
+          btnText: "Register Interest",
+          btnHref: "#inquiry",
+          ctaSub: "Early birds get first pick · No commitment required",
+          dates: [
+            "01 Nov – 15 Nov 2027", "03 Nov – 17 Nov 2027", "06 Nov – 20 Nov 2027", "08 Nov – 22 Nov 2027",
+            "10 Nov – 24 Nov 2027", "13 Nov – 27 Nov 2027", "15 Nov – 29 Nov 2027", "17 Nov – 01 Dec 2027",
+            "20 Nov – 04 Dec 2027", "22 Nov – 06 Dec 2027", "24 Nov – 08 Dec 2027", "27 Nov – 11 Dec 2027",
+            "29 Nov – 13 Dec 2027"
+          ]
+        },
+        {
+          id: "december-2027",
+          tab: "December 2027",
+          title: "December 2027 — Early Bird Registration",
+          desc: "Winter season departures — register your interest now for priority access",
+          variant: "earlybird",
+          status: "EARLY BIRD — AUTUMN 2027",
+          price: "USD $1,430 per person — all inclusive",
+          spots: "Priority access for early registrations",
+          confirmed: "No commitment required · Just your preferred date",
+          btnText: "Register Interest",
+          btnHref: "#inquiry",
+          ctaSub: "Early birds get first pick · No commitment required",
+          dates: [
+            "01 Dec – 15 Dec 2027", "04 Dec – 18 Dec 2027", "06 Dec – 20 Dec 2027", "08 Dec – 22 Dec 2027",
+            "11 Dec – 25 Dec 2027", "13 Dec – 27 Dec 2027", "15 Dec – 29 Dec 2027", "18 Dec – 01 Jan 2028",
+            "20 Dec – 03 Jan 2028", "22 Dec – 05 Jan 2028", "25 Dec – 08 Jan 2028", "27 Dec – 10 Jan 2028",
+            "29 Dec – 12 Jan 2028"
+          ]
+        }
+      ];
+
+      var app = document.getElementById("departures-app");
+      if (!app) return;
+      var tablist = app.querySelector(".departures__tabs");
+      var panels = app.querySelector(".departures__panels");
+
+      function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+      function svg(id) { return '<svg class="icon" aria-hidden="true"><use href="#' + id + '" /></svg>'; }
+
+      function cardHTML(season, date) {
+        var sidebar = season.variant === "earlybird"
+          ? '<div class="departure-card__sidebar" style="background-color:#6366f1;"></div>'
+          : '<div class="departure-card__sidebar bg-success"></div>';
+        var statusIcon = season.variant === "earlybird" ? "i-bell" : "i-check-circle";
+        var status = season.variant === "earlybird"
+          ? '<span class="departure-card__status" style="background-color:rgba(99,102,241,0.08);color:#6366f1;">' + svg(statusIcon) + esc(season.status) + '</span>'
+          : '<span class="departure-card__status bg-success-10 c-success">' + svg(statusIcon) + esc(season.status) + '</span>';
+        return '<div class="departure-card card-hover">' + sidebar +
+          '<div class="departure-card__body">' + status +
+            '<div class="departure-card__row"><div>' +
+              '<p class="departure-card__date"><span class="departure-card__icon">' + svg("i-calendar") + '</span>' + esc(date) + '</p>' +
+              '<p class="departure-card__price"><span class="departure-card__icon">' + svg("i-dollar") + '</span>' + esc(season.price) + '</p>' +
+              '<p class="departure-card__spots"><span class="departure-card__icon">' + svg("i-users") + '</span>' + esc(season.spots) + '</p>' +
+              '<p class="departure-card__confirmed"><span class="departure-card__icon">' + svg("i-check") + '</span>' + esc(season.confirmed) + '</p>' +
+            '</div><div class="departure-card__cta-wrap">' +
+              '<a href="' + esc(season.btnHref) + '" class="btn btn-primary btn--sm">' + esc(season.btnText) + '</a>' +
+              '<p class="departure-card__cta-sub">' + esc(season.ctaSub) + '</p>' +
+            '</div></div></div></div>';
+      }
+
+      DEPARTURES.forEach(function (season, i) {
+        var tab = document.createElement("button");
+        tab.className = "departures__tab" + (i === 0 ? " departures__tab--active" : "");
+        tab.id = "tab-" + season.id;
+        tab.type = "button";
+        tab.setAttribute("role", "tab");
+        tab.setAttribute("aria-selected", i === 0 ? "true" : "false");
+        tab.setAttribute("aria-controls", "panel-" + season.id);
+        tab.textContent = season.tab;
+        tablist.appendChild(tab);
+
+        var panel = document.createElement("div");
+        panel.className = "departures__panel" + (i === 0 ? " departures__panel--active" : "");
+        panel.id = "panel-" + season.id;
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", "tab-" + season.id);
+        panel.innerHTML =
+          '<div class="departures__season-header u-mt-6"><h3 class="departures__season-title">' + esc(season.title) +
+          '</h3><p class="departures__season-desc">' + esc(season.desc) + '</p></div>' +
+          '<div class="grid--halves">' + season.dates.map(function (d) { return cardHTML(season, d); }).join("") + '</div>';
+        panels.appendChild(panel);
+      });
+
+      tablist.addEventListener("click", function (e) {
+        var btn = e.target.closest(".departures__tab");
+        if (!btn) return;
+        var id = btn.id.replace("tab-", "");
+        tablist.querySelectorAll(".departures__tab").forEach(function (t) {
+          var on = t === btn;
+          t.classList.toggle("departures__tab--active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        panels.querySelectorAll(".departures__panel").forEach(function (p) {
+          p.classList.toggle("departures__panel--active", p.id === "panel-" + id);
+        });
+      });
+    })();

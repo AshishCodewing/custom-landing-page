@@ -91,9 +91,9 @@
     }
 
     .custom-landing-page .u-container {
-      max-width: 1200px;
-      margin-inline: auto;
-      padding-inline: 1rem
+      width: min(100% - 32px,1320px);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .custom-landing-page .u-text-center {
@@ -926,6 +926,7 @@
       border-radius: var(--radius-lg);
       width: 100%;
       display: inline-block;
+      text-align: center;
     }
 
     .custom-landing-page .btn-secondary {
@@ -954,6 +955,12 @@
         width: auto;
         padding: 1rem 2rem
       }
+    }
+
+    .custom-landing-page .btn--sm {
+      width: auto;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
     }
 
     .custom-landing-page .hero__secure {
@@ -1243,6 +1250,108 @@
 
     .custom-landing-page .trust-card__link:hover {
       text-decoration: underline
+    }
+
+    .custom-landing-page .reviews__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem
+    }
+
+    .custom-landing-page .reviews__card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease
+    }
+
+    .custom-landing-page .reviews__card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-brand);
+      box-shadow: 0 12px 28px -12px rgba(20, 91, 143, .28)
+    }
+
+    .custom-landing-page .reviews__logo {
+      display: block;
+      margin-bottom: 1rem
+    }
+
+    .custom-landing-page .reviews__logo svg {
+      display: block;
+      width: auto;
+      height: 1.75rem
+    }
+
+    .custom-landing-page .reviews__logo path {
+      stroke: none
+    }
+
+    .custom-landing-page .reviews__award {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #00aa6c;
+      margin-bottom: 0.625rem
+    }
+
+    .custom-landing-page .reviews__stars {
+      display: flex;
+      gap: 2px;
+      color: #fec84b;
+      margin-bottom: 0.625rem
+    }
+
+    .custom-landing-page .reviews__star {
+      display: block;
+      width: 20px;
+      height: 20px
+    }
+
+    .custom-landing-page .reviews__bubbles {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 0.625rem
+    }
+
+    .custom-landing-page .reviews__bubble {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      background-color: #00aa6c
+    }
+
+    .custom-landing-page .reviews__score {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--color-charcoal);
+      margin-bottom: 0.5rem
+    }
+
+    .custom-landing-page .reviews__score-sub {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-gray-500)
+    }
+
+    .custom-landing-page .reviews__meta {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--color-gray-500)
+    }
+
+    @media(min-width:48rem) {
+      .custom-landing-page .reviews__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem
+      }
     }
 
     .custom-landing-page .certs__grid {
@@ -1976,6 +2085,327 @@
     .custom-landing-page .departures__info-item strong {
       color: var(--color-charcoal);
       font-weight: 700;
+    }
+
+    .custom-landing-page .departures__alternate {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-gray-200);
+    }
+
+    .custom-landing-page .departures__alternate-title {
+      font-weight: 700;
+      font-size: 1.0625rem;
+      color: var(--color-charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .custom-landing-page .departures__alternate-text {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--color-gray-600);
+    }
+
+    .custom-landing-page .departures__alternate-text + .departures__alternate-text {
+      margin-top: 0.75rem;
+    }
+
+    .custom-landing-page .departures__alternate-text strong {
+      color: var(--color-charcoal);
+      font-weight: 700;
+    }
+
+    .custom-landing-page .departures__info-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 40rem) {
+      .custom-landing-page .departures__info-links {
+        flex-direction: row;
+        gap: 2rem;
+      }
+    }
+
+    .custom-landing-page .departures__info-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--color-brand);
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .custom-landing-page .departures__info-link .icon {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+
+    .custom-landing-page .departures__info-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ---- Departure date tabs ---- */
+    .custom-landing-page .departures__tabs-wrap {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      background-color: var(--color-white);
+      border: 1px solid var(--color-gray-200);
+    }
+
+    .custom-landing-page .departures__tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.25rem 2rem;
+      border-bottom: 1px solid var(--color-gray-200);
+      margin-bottom: 0.5rem;
+    }
+
+    .custom-landing-page .departures__tab {
+      flex-shrink: 0;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      color: var(--color-gray-500);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      padding: 0.75rem 0.5rem;
+      white-space: nowrap;
+      scroll-snap-align: start;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .custom-landing-page .departures__tab:hover {
+      color: var(--color-charcoal);
+    }
+
+    .custom-landing-page .departures__tab:focus-visible {
+      outline: 2px solid var(--color-brand);
+      outline-offset: 2px;
+    }
+
+    .custom-landing-page .departures__tab--active,
+    .custom-landing-page .departures__tab--active:hover {
+      color: var(--color-brand);
+      border-bottom-color: var(--color-brand);
+    }
+
+    @media (max-width: 47.999rem) {
+      .custom-landing-page .departures__tabs-wrap {
+        padding: 1rem;
+      }
+
+      .custom-landing-page .departures__info-box {
+        padding: 1.25rem;
+      }
+
+      .custom-landing-page .departures__tabs {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 0 1.5rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 1rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .custom-landing-page .departures__tabs::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .custom-landing-page .departures__panels {
+      margin-top: 3.5rem;
+    }
+
+    .custom-landing-page .departures__panel {
+      display: none;
+      opacity: 0;
+      translate: -12px 0;
+    }
+
+    .custom-landing-page .departures__panel--active {
+      display: block;
+      opacity: 1;
+      translate: 0 0;
+      transition: opacity 0.35s ease, translate 0.35s ease;
+    }
+
+    @starting-style {
+      .custom-landing-page .departures__panel--active {
+        opacity: 0;
+        translate: -12px 0;
+      }
+    }
+
+    .custom-landing-page .departures__season-header {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .custom-landing-page .departures__season-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-charcoal);
+    }
+
+    .custom-landing-page .departure-card__status .icon {
+      vertical-align: -0.1em;
+    }
+
+    .custom-landing-page .departures__season-desc {
+      font-size: 0.875rem;
+      color: var(--color-gray-500);
+      margin-top: 0.25rem;
+    }
+
+    /* ---- Departure cards ---- */
+    .custom-landing-page .departure-card {
+      background-color: var(--color-white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-gray-200);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .custom-landing-page .departure-card__sidebar {
+      height: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .custom-landing-page .departure-card__body {
+      flex: 1;
+      padding: 1rem;
+    }
+
+    @media (min-width: 40rem) {
+      .custom-landing-page .departure-card {
+        flex-direction: row;
+      }
+
+      .custom-landing-page .departure-card__sidebar {
+        width: 0.75rem;
+        height: auto;
+      }
+
+      .custom-landing-page .departure-card__body {
+        padding: 1rem 1.25rem;
+      }
+    }
+
+    @media (min-width: 48rem) {
+      .custom-landing-page .departure-card__sidebar {
+        width: 1rem;
+      }
+
+      .custom-landing-page .departure-card__body {
+        padding: 1.25rem;
+      }
+    }
+
+    .custom-landing-page .departure-card__status {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+      margin-bottom: 0.75rem;
+    }
+
+    .custom-landing-page .departure-card__date {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-charcoal);
+    }
+
+    .custom-landing-page .departure-card__price {
+      color: var(--color-brand);
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .custom-landing-page .departure-card__spots {
+      font-size: 0.75rem;
+      color: var(--color-gray-500);
+    }
+
+    .custom-landing-page .departure-card__confirmed {
+      color: var(--color-success);
+      font-size: 0.75rem;
+      margin-top: 0.4rem;
+    }
+
+    .custom-landing-page .departure-card__date,
+    .custom-landing-page .departure-card__price,
+    .custom-landing-page .departure-card__spots,
+    .custom-landing-page .departure-card__confirmed {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45em;
+    }
+
+    .custom-landing-page .departure-card__icon {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+    }
+
+    .custom-landing-page .departure-card__row {
+      display: grid;
+      gap: 1rem;
+    }
+
+    /* The text column (date · price · spots · confirmed) */
+    .custom-landing-page .departure-card__row > div:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+
+    @media (min-width: 40rem) {
+      .custom-landing-page .departure-card__row {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 1.5rem;
+      }
+    }
+
+    .custom-landing-page .departure-card__cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .custom-landing-page .departure-card__cta-wrap .btn {
+      white-space: nowrap;
+    }
+
+    @media (min-width: 40rem) {
+      .custom-landing-page .departure-card__cta-wrap {
+        align-items: flex-end;
+        text-align: right;
+      }
+    }
+
+    .custom-landing-page .departure-card__cta-sub {
+      font-size: 0.75rem;
+      line-height: 1.35;
+      color: var(--color-gray-500);
+      max-width: 15rem;
     }
 
     .custom-landing-page .testimonial-card {
@@ -3667,7 +4097,7 @@
     }
 
     .custom-landing-page .u-container--narrow {
-      max-width: 1000px
+      width: min(100% - 32px,1000px);
     }
 
     /* Narrower section intro (base .section__desc is 800px, centered) */
