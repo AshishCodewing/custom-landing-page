@@ -145,7 +145,7 @@
           price: "USD $1,430 per person — all inclusive",
           spots: "Guaranteed Departure",
           confirmed: "Guide Assigned · Route Confirmed · Teahouses Reserved",
-          btnText: "Inquire About This Date",
+          btnText: "Book This Trip",
           btnHref: "#inquiry",
           ctaSub: "Responds within 2 hours · $200 deposit to confirm",
           dates: [
@@ -178,7 +178,7 @@
           price: "USD $1,430 per person — all inclusive",
           spots: "Guaranteed Departure",
           confirmed: "Guide Assigned · Route Confirmed · Teahouses Reserved",
-          btnText: "Inquire About This Date",
+          btnText: "Book This Trip",
           btnHref: "#inquiry",
           ctaSub: "Responds within 2 hours · $200 deposit to confirm",
           dates: [
@@ -199,7 +199,7 @@
           price: "USD $1,430 per person — all inclusive",
           spots: "Guaranteed Departure",
           confirmed: "Guide Assigned · Route Confirmed · Teahouses Reserved",
-          btnText: "Inquire About This Date",
+          btnText: "Book This Trip",
           btnHref: "#inquiry",
           ctaSub: "Responds within 2 hours · $200 deposit to confirm",
           dates: [
@@ -324,7 +324,11 @@
               '<p class="departure-card__spots"><span class="departure-card__icon">' + svg("i-users") + '</span>' + esc(season.spots) + '</p>' +
               '<p class="departure-card__confirmed"><span class="departure-card__icon">' + svg("i-check") + '</span>' + esc(season.confirmed) + '</p>' +
             '</div><div class="departure-card__cta-wrap">' +
-              '<a href="' + esc(season.btnHref) + '" class="btn btn-primary btn--sm">' + esc(season.btnText) + '</a>' +
+              // Available departures open the WeTravel booking popup (data-book-trip);
+              // early-bird cards keep their original inquiry link.
+              (season.variant === "available"
+                ? '<a href="#book" class="btn btn-primary btn--sm" data-book-trip>' + esc(season.btnText) + '</a>'
+                : '<a href="' + esc(season.btnHref) + '" class="btn btn-primary btn--sm">' + esc(season.btnText) + '</a>') +
               '<p class="departure-card__cta-sub">' + esc(season.ctaSub) + '</p>' +
             '</div></div></div></div>';
       }
@@ -364,5 +368,57 @@
         panels.querySelectorAll(".departures__panel").forEach(function (p) {
           p.classList.toggle("departures__panel--active", p.id === "panel-" + id);
         });
+      });
+    })();
+
+    // Booking popup: "Book This Trip" (available departures) opens the WeTravel
+    // calendar in a native <dialog>. The widget script is injected on first open
+    // (lazy, like the Chart.js / YouTube facades above) and reused thereafter.
+    (function () {
+      var dialog = document.getElementById("booking-dialog");
+      if (!dialog || typeof dialog.showModal !== "function") return;
+      var host = document.getElementById("wetravel-host");
+      var loaded = false;
+
+      function loadWidget() {
+        if (loaded || !host) return;
+        loaded = true;
+        var s = document.createElement("script");
+        s.src = "https://cdn.wetravel.com/widgets/embed_calendar.js";
+        s.id = "wetravel_embed_calendar"; // fallback target the widget looks up
+        var data = {
+          env: "https://www.wetravel.com", version: "v0.3", uid: "166592",
+          uuid: "5213397405", color: "436cda", text: "Book Now",
+          title: "Select Departure Date", position: "center"
+        };
+        Object.keys(data).forEach(function (k) { s.setAttribute("data-" + k, data[k]); });
+        host.appendChild(s);
+      }
+
+      // Cards are rendered after this runs, so delegate from the document.
+      document.addEventListener("click", function (e) {
+        var trigger = e.target.closest("[data-book-trip]");
+        if (!trigger) return;
+        e.preventDefault();
+        loadWidget();
+        if (!dialog.open) dialog.showModal();
+      });
+
+      // Close via the × button or a click on the backdrop (target is the dialog itself).
+      // Esc-to-close is native to <dialog>.
+      dialog.addEventListener("click", function (e) {
+        if (e.target.closest("[data-booking-close]") || e.target === dialog) dialog.close();
+      });
+
+      // When a date is picked, WeTravel opens its own full-screen checkout overlay
+      // (it posts a "WTRVL_checkout…" message). Our modal sits in the browser's top
+      // layer — above any z-index — so we must close it or it traps the checkout
+      // behind it. WeTravel's overlay is appended to <body> and remains on top.
+      window.addEventListener("message", function (e) {
+        if (typeof e.data === "string" && e.data.indexOf("WTRVL_checkout") !== -1 && dialog.open) {
+          // WeTravel's checkout overlay takes a moment to render; wait so it's
+          // visible behind us before we close, avoiding a blank flash.
+          setTimeout(function () { if (dialog.open) dialog.close(); }, 600);
+        }
       });
     })();

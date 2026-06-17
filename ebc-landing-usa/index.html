@@ -409,7 +409,7 @@
           </div>
 
           <div class="hero__actions">
-            <a href="#departure-dates" class="btn btn-primary btn-pulse">
+            <a href="#departures-app" class="btn btn-primary btn-pulse">
               Check 2026 &amp; 2027 Departure Dates
             </a>
             <a href="#included" class="btn btn-secondary">
@@ -2113,6 +2113,7 @@
             Pheriche 4,371m · Day 12: Namche 3,440m · Day 13: Lukla 2,840m · Day 14-15: Kathmandu 1,400m
           </p>
         </div>
+      </div>
     </section>
 
 
@@ -3889,7 +3890,7 @@
               <p>Every year that you wait is another year you look back on and wonder why you waited.</p>
             </div>
             <div class="cta-section__actions">
-              <a href="#departure-dates" class="btn btn-primary">Check Available Departure Dates</a>
+              <a href="#departures-app" class="btn btn-primary">Check Available Departure Dates</a>
               <p class="cta-section__response">60-second inquiry &nbsp;·&nbsp; 2-hour response &nbsp;·&nbsp; Low deposit
                 &nbsp;·&nbsp; Free cancellation up to 30 days</p>
             </div>
@@ -4278,7 +4279,7 @@
             Ready to become part of our story?<br>
             Your 2026 or 2027 Everest Base Camp Trek starts with a 60-second inquiry.
           </p>
-          <a href="#departure-dates" class="btn btn-primary">
+          <a href="#departures-app" class="btn btn-primary">
             Check Departure Dates and Send an Inquiry
           </a>
         </div>
@@ -4326,7 +4327,7 @@
         </div>
 
         <div class="final-cta__actions">
-          <a href="#departure-dates" class="btn btn-primary">
+          <a href="#departures-app" class="btn btn-primary">
             View Departure Dates &amp; Book
           </a>
           <a href="https://wa.me/977XXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
@@ -4359,6 +4360,17 @@
       </svg>
       <span class="whatsapp-float__tooltip">Questions? WhatsApp us!</span>
     </a>
+
+    <!-- Booking popup: holds the WeTravel calendar; opened by "Book This Trip". -->
+    <dialog id="booking-dialog" class="booking-dialog" aria-labelledby="booking-dialog-title">
+      <div class="booking-dialog__head">
+        <h2 id="booking-dialog-title" class="booking-dialog__title">Select Your Departure Date</h2>
+        <button type="button" class="booking-dialog__close" data-booking-close aria-label="Close booking window">
+          <svg class="icon" aria-hidden="true"><use href="#i-x" /></svg>
+        </button>
+      </div>
+      <div id="wetravel-host" class="booking-dialog__widget"></div>
+    </dialog>
   </div>
   <script src="assets/js/main.js" defer></script>
 </body>
